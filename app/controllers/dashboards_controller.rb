@@ -4,7 +4,7 @@ class DashboardsController < ApplicationController
   # GET /dashboards
   # GET /dashboards.json
   def index
-    @criminals = Criminal.take(12)
+    @criminals = Criminal.take(12).reverse
     #@criminals = Criminal.where("genero = '0'")
   end
 
@@ -13,7 +13,8 @@ class DashboardsController < ApplicationController
   def show
     @match_search = Criminal.find(params[:id])
     #select the ones that match more close to this
-    @criminals = Criminal.all :limit=>12
+    @matchs = Comparison.find_all_by_comparado_con @match_search.id
+    @criminals = Criminal.take(12).reverse
   end
 
   # POST /dashboards
@@ -22,6 +23,8 @@ class DashboardsController < ApplicationController
       @criminals = Criminal.where(:genero=>1).take(12)
     elsif params['filtro']=='Femenino'
       @criminals = Criminal.where(:genero=>0).take(12)
+    else
+      @criminals = Criminal.take(12).reverse
     end
   end
 
