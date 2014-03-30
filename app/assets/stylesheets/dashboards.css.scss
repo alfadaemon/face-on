@@ -1,0 +1,19 @@
+// Place all the styles related to the dashboards controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.main-content {
+  border-right: 1px solid #CCC;
+  float: left;
+  padding: 20px;
+  width: 75%;
+  width: calc(100% / 4 * 3);
+}
+
+.sidebar {
+  border-left: 1px solid #CCC;
+  float: left;
+  margin-left: -1px;
+  padding: 20px;
+  width: 25%;
+  width: calc(100% / 4);
+}
