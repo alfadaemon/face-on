@@ -6,6 +6,7 @@ FaceOn::Application.routes.draw do
   end
 
   resources :criminals
+  resources :dashboards
 
   root :to => 'home#index'
 end
