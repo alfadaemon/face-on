@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Nombre:
+  = @criminal.nombre
+%p
+  %b Apellido:
+  = @criminal.apellido
+%p
+  %b Genero:
+  = @criminal.genero==1 ? 'Maculino' : 'Femenino'
+%p
+  %b Ficha:
+  = @criminal.ficha
+%p
+  %b Foto:
+  =image_tag @criminal.foto.url(:thumb) if @criminal.foto
+
+= link_to 'Editar', edit_criminal_path(@criminal)
+\|
+= link_to 'Regresar', criminals_path

@@ -1,0 +1,27 @@
+= form_for @criminal, :multipart => true do |f|
+  - if @criminal.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@criminal.errors.count, "error")} no permiten que se guarde este registro:"
+      %ul
+        - @criminal.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :nombre
+    = f.text_field :nombre
+  .field
+    = f.label :apellido
+    = f.text_field :apellido
+  .field
+    = f.label :genero
+    = f.select :genero, options_for_select([['Masculino', '1'], ['Femenino', '0']])
+  .field
+    = f.label :ficha
+    = f.text_field :ficha
+  .control-group
+    =image_tag @criminal.foto.url(:thumb) if @criminal.foto
+    %label.control-label( for = 'foto' ) Foto
+    .controls
+      = f.file_field :foto
+  .actions
+    = f.submit 'Guardar', {:class=>'button [tiny small large]'}

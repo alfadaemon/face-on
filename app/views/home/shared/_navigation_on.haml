@@ -1,0 +1,11 @@
+/ navegation bar
+.row
+    .large-3.columns
+        %h1
+            %img{src:"http://placehold.it/400x100&text=Logo"}
+    .large-9.columns
+        %ul.right.button-group
+            %li
+                =link_to "Juego", game_path, method: :get, class: "button"
+            %li
+                =link_to "Salir", destroy_user_session_path, method: :delete, class: "button"

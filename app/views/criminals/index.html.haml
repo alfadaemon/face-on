@@ -1,0 +1,27 @@
+%h1 Listado de criminales
+
+%table
+  %tr
+    %th Nombre
+    %th Apellido
+    %th Genero
+    %th Ficha
+    %th Foto
+    %th
+    %th
+    %th
+
+  - @criminals.each do |criminal|
+    %tr
+      %td= criminal.nombre
+      %td= criminal.apellido
+      %td= criminal.genero==1 ? 'Maculino' : 'Femenino'
+      %td= criminal.ficha
+      %td= image_tag criminal.foto.url(:thumb) if criminal.foto
+      %td= link_to 'Ver', criminal
+      %td= link_to 'Editar', edit_criminal_path(criminal)
+      %td= link_to 'Eliminar', criminal, :method => :delete, :data => { :confirm => 'Esta seguro?' }
+
+%br
+
+= link_to 'Nuevo Criminal', new_criminal_path

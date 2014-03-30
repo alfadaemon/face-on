@@ -1,0 +1,45 @@
+!!!
+%html{lang: "en"}
+  %head
+    %meta{charset: "utf-8"}/
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+    %title= "FaceOn: #{content_for?(:title) ? content_for(:title) :'Home' }"
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "vendor/modernizr"
+    = csrf_meta_tags
+  %body
+
+    - if notice
+      .row
+        .large-12.columns
+          %p.alert-box.alert{style: "text-align:center"}
+            = notice
+    
+    - if alert
+      .row
+        .large-12.columns
+          %p.alert-box.info{style: "text-align:center"}
+            = alert
+    
+    .row
+      .large-12.columns
+        = yield
+
+    / Footer
+    %footer.row
+      .large-12.columns
+        %hr/
+        .row
+          .large-6.columns
+            %p
+              \© Copyright
+              2014
+          .large-6.columns
+            %ul.inline-list.right
+              %li
+                %a{href: "#"} Link 1
+              %li
+                %a{href: "#"} Link 2
+              %li
+                %a{href: "#"} Link 3
+    = javascript_include_tag "application"
