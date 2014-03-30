@@ -28,6 +28,7 @@ class CriminalsController < ApplicationController
 
     respond_to do |format|
       if @criminal.save
+        ComparisonWorker.perform_async @criminal.id
         format.html { redirect_to @criminal, notice: 'Criminal was successfully created.' }
         format.json { render action: 'show', status: :created, location: @criminal }
       else
