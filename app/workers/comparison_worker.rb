@@ -5,6 +5,7 @@ class ComparisonWorker
   include Sidekiq::Worker
 
   def perform(criminal_id)
+
     puts 'Doing hard work'
 
     value = 0.0
@@ -37,26 +38,26 @@ class ComparisonWorker
           begin
             stdin.each do |line|
               if (line.to_f > 0.0 ) #dirty hack please fix, we shouldnt be doing this ./br should only ouput float
-                value=line.to_f.to_s
+                value=line.to_f
               end
             end
           rescue Errno::EIO#end of line
             comp.weigth = value
-            Rails.logger.info("comparando #{new_criminal} con #{c.id}, resultado #{value}")
+            Rails.logger.info("comparando #{new_criminal.id} con #{c.id}, resultado #{value}")
           end#end of begin for iterating over stdin
           Process.wait(pid)#make sure objects ends
         end#end of PTY spawn
         Rails.logger.info("[waiting / killing]")
         Rails.logger.info(@curr_pid)
-        # Process.wait(@curr_pid)#make sure objects ends
-        # Process.kill('INT', @curr_pid)#doubly make sure process ends :)
+          # Process.wait(@curr_pid)#make sure objects ends
+          # Process.kill('INT', @curr_pid)#doubly make sure process ends :)
 
-        # rescue PTY::ECHILD
-        # puts "The child process died!PID #{pid} filenames #{filename_one} , #{filename_two}"
+          # rescue PTY::ECHILD
+          # puts "The child process died!PID #{pid} filenames #{filename_one} , #{filename_two}"
       rescue PTY::ChildExited
         # binding.pry
         puts "The child process exited!PID #{pid} filenames #{filename_one} , #{filename_two}"
-      end#end of bada begin
+      end#end of bada bin
       comp.save
     end
   end

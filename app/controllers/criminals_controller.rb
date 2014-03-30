@@ -74,12 +74,12 @@ class CriminalsController < ApplicationController
           begin
             stdin.each do |line|
               if (line.to_f > 0.0 ) #dirty hack please fix, we shouldnt be doing this ./br should only ouput float
-                value=line.to_f.to_s
+                value=line.to_f
               end
             end
           rescue Errno::EIO#end of line
             comp.weigth = value
-            Rails.logger.info("comparando #{new_criminal} con #{c.id}, resultado #{value}")
+            Rails.logger.info("comparando #{new_criminal.id} con #{c.id}, resultado #{value}")
           end#end of begin for iterating over stdin
           Process.wait(pid)#make sure objects ends
         end#end of PTY spawn
@@ -93,7 +93,8 @@ class CriminalsController < ApplicationController
       rescue PTY::ChildExited
         # binding.pry
         puts "The child process exited!PID #{pid} filenames #{filename_one} , #{filename_two}"
-      end#end of bada begin
+      end#end of bada bin
+      comp.save
     end
   end
 
