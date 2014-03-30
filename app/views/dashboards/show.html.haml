@@ -1,7 +1,8 @@
 .sitewrap
   .row.clearfix
     %aside.sidebar
-      %h4.moduletitle Genero del criminal
+      =link_to "Atras", root_path
+      %h4.moduletitle Su seleccion
       %p
         %b Ficha:
         = @match_search.ficha
@@ -14,5 +15,7 @@
         - @criminals.each do |c|
 
           %li
-            =link_to(image_tag(c.foto.url(:thumb)),  dashboards_path(:id=>c.id))
+            =link_to(image_tag(c.foto.url(:thumb)),  "#{c.id}" )
+            %br
+            =c.ficha
 

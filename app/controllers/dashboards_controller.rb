@@ -4,7 +4,6 @@ class DashboardsController < ApplicationController
   # GET /dashboards
   # GET /dashboards.json
   def index
-    @dashboard = 0
     @criminals = Criminal.take(12)
     #@criminals = Criminal.where("genero = '0'")
   end
@@ -13,27 +12,16 @@ class DashboardsController < ApplicationController
   # GET /dashboards/1.json
   def show
     @match_search = Criminal.find(params[:id])
-
-    @criminals = Criminal.all(:limit=>10)
-  end
-
-  def filtro
-    
+    #select the ones that match more close to this
+    @criminals = Criminal.all :limit=>12
   end
 
   # POST /dashboards
-  # POST /dashboards.json
-  def create
-    @dashboard = Dashboard.new(dashboard_params)
-
-    respond_to do |format|
-      if @dashboard.save
-        format.html { redirect_to @dashboard, notice: 'Dashboard was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @dashboard }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @dashboard.errors, status: :unprocessable_entity }
-      end
+  def filtro
+    if params['filtro']=='Masculino'
+      @criminals = Criminal.where(:genero=>1).take(12)
+    elsif params['filtro']=='Femenino'
+      @criminals = Criminal.where(:genero=>0).take(12)
     end
   end
 

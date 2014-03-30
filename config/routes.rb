@@ -6,7 +6,10 @@ FaceOn::Application.routes.draw do
   end
 
   resources :criminals
-  resources :dashboards
+
+  post 'dashboards/filtro' => 'dashboards#filtro'
+
+  resources :dashboards, :only => [:index, :show]
 
   root :to => 'dashboards#index'
 end
