@@ -1,6 +1,18 @@
-%p#notice= notice
+.sitewrap
+  .row.clearfix
+    %aside.sidebar
+      %h4.moduletitle Genero del criminal
+      %p
+        %b Ficha:
+        = @match_search.ficha
+      %p
+        = image_tag @match_search.foto.url(:thumb)
+    %section.main-content
 
+      %ul.small-block-grid-2.large-block-grid-4{"data-clearing" => ""}
 
-= link_to 'Edit', edit_dashboard_path(@dashboard)
-\|
-= link_to 'Back', dashboards_path
+        - @criminals.each do |c|
+
+          %li
+            =link_to(image_tag(c.foto.url(:thumb)),  dashboards_path(:id=>c.id))
+
