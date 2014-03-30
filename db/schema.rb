@@ -13,13 +13,8 @@
 
 ActiveRecord::Schema.define(version: 20140330080050) do
 
-  create_table "comparisons", force: true do |t|
-    t.integer  "criminal_id"
-    t.integer  "comparado_con"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.float    "weigth"
-  end
+# Could not dump table "comparisons" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "criminals", force: true do |t|
     t.datetime "created_at"
