@@ -27,7 +27,7 @@ class ComparisonWorker
       comp.comparado_con = c.id
 
       #Calcular el weigth de la comparacion de las fotos
-      command_to_exec = "br -algorithm FaceRecognition -compare #{new_criminal.foto.url(:thumb)} #{c.foto.url(:thumb)}"
+      command_to_exec = "br -algorithm FaceRecognition -compare #{new_criminal.foto.path} #{c.foto.path}"
       @curr_pid = 0
       begin
         PTY.spawn( command_to_exec ) do |stdin, stdout, pid|
