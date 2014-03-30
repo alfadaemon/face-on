@@ -2,10 +2,15 @@
   .row.clearfix
     %aside.sidebar
       %h4.moduletitle Genero del criminal
-      %select
-        %option{value: "2"} Todos
-        %option{value: "0"} Femenino
-        %option{value: "1"} Masculino
+
+      = form_tag "/dashboards/index" , :method => :get do
+        = select_tag "filtro", options_for_select(["Todos","Masculino","Femenino"])
+        %br/
+        %input{type: "submit", value: "Submit"}/
+
+
+
+
     %section.main-content
 
       %ul.small-block-grid-2.large-block-grid-4{"data-clearing" => ""}
@@ -14,5 +19,4 @@
 
           %li
             =link_to(image_tag(c.foto.url(:thumb)),  "dashboards/#{c.id}" )
-
 
