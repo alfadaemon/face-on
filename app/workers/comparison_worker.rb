@@ -23,7 +23,7 @@ class ComparisonWorker
       comp = Comparison.new
       comp.criminal = new_criminal
       comp.comparado_con = c.id
-      comp.weight = 1
+      comp.weigth = 1
       comp.save
       Rails.logger.info("comparando #{new_criminal} con #{c.id}")
     end
