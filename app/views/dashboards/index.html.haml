@@ -1,50 +1,18 @@
-%h4 Miscellaneous
-%ul.small-block-grid-2.large-block-grid-4{"data-clearing" => ""}
-  %li
-    %a{href: "http://placeimg.com/640/480/any"}
-      %img.th{alt: "Miscellaneous", src: "http://placeimg.com/640/480/any"}/
-  %li
-    %a{href: "http://placeimg.com/640/480/any"}
-      %img.th{alt: "Miscellaneous", src: "http://placeimg.com/640/480/any"}/
-  %li
-    %a{href: "http://placeimg.com/640/480/any"}
-      %img.th{alt: "Miscellaneous", src: "http://placeimg.com/640/480/any"}/
-  %li
-    %a{href: "http://placeimg.com/640/480/any"}
-      %img.th{alt: "Miscellaneous", src: "http://placeimg.com/640/480/any"}/
-  %li
-    %a{href: "http://placeimg.com/640/480/any"}
-      %img.th{alt: "Miscellaneous", src: "http://placeimg.com/640/480/any"}/
-  %li
-    %a{href: "http://placeimg.com/640/480/any"}
-      %img.th{alt: "Miscellaneous", src: "http://placeimg.com/640/480/any"}/
-  %li
-    %a{href: "http://placeimg.com/640/480/any"}
-      %img.th{alt: "Miscellaneous", src: "http://placeimg.com/640/480/any"}/
-  %li
-    %a{href: "http://placeimg.com/640/480/any"}
-      %img.th{alt: "Miscellaneous", src: "http://placeimg.com/640/480/any"}/
-  %li
-    %a{href: "http://placeimg.com/640/480/any"}
-      %img.th{alt: "Miscellaneous", src: "http://placeimg.com/640/480/any"}/
-  %li
-    %a{href: "http://placeimg.com/640/480/any"}
-      %img.th{alt: "Miscellaneous", src: "http://placeimg.com/640/480/any"}/
-  %li
-    %a{href: "http://placeimg.com/640/480/any"}
-      %img.th{alt: "Miscellaneous", src: "http://placeimg.com/640/480/any"}/
-  %li
-    %a{href: "http://placeimg.com/640/480/any"}
-      %img.th{alt: "Miscellaneous", src: "http://placeimg.com/640/480/any"}/
-  %li
-    %a{href: "http://placeimg.com/640/480/any"}
-      %img.th{alt: "Miscellaneous", src: "http://placeimg.com/640/480/any"}/
-  %li
-    %a{href: "http://placeimg.com/640/480/any"}
-      %img.th{alt: "Miscellaneous", src: "http://placeimg.com/640/480/any"}/
-  %li
-    %a{href: "http://placeimg.com/640/480/any"}
-      %img.th{alt: "Miscellaneous", src: "http://placeimg.com/640/480/any"}/
-  %li
-    %a{href: "http://placeimg.com/640/480/any"}
-      %img.th{alt: "Miscellaneous", src: "http://placeimg.com/640/480/any"}/
+.sitewrap
+  .row.clearfix
+    %aside.sidebar
+      %h4.moduletitle Genero del criminal
+      %select
+        %option{value: "2"} Todos
+        %option{value: "0"} Femenino
+        %option{value: "1"} Masculino
+    %section.main-content
+
+      %ul.small-block-grid-2.large-block-grid-4{"data-clearing" => ""}
+
+        - @criminals.each do |c|
+
+          %li
+            =link_to(image_tag(c.foto.url(:thumb)),  dashboards_path(:id=>c.id))
+
+

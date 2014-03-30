@@ -4,12 +4,13 @@ class DashboardsController < ApplicationController
   # GET /dashboards
   # GET /dashboards.json
   def index
-    @criminals = Criminal.take(10)
+    @criminals = Criminal.take(12)
   end
 
   # GET /dashboards/1
   # GET /dashboards/1.json
   def show
+
   end
 
   # GET /dashboards/new
